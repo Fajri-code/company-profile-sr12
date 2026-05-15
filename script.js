@@ -224,7 +224,7 @@ function renderProducts(cat) {
       </div>
       <div class="produk-footer">
         <div class="produk-price">${p.price}</div>
-        <a href="https://wa.me/6295330415394?text=${encodeURIComponent(`Halo kak, saya ingin bertanya dan berkonsultasi mengenai produk ${p.name}😊`)}" target="_blank" class="produk-order" title="Order via WhatsApp">
+        <a href="https://wa.me/62895330415394?text=${encodeURIComponent(`Halo kak, saya ingin bertanya dan berkonsultasi mengenai produk ${p.name}😊`)}" target="_blank" class="produk-order" title="Order via WhatsApp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
@@ -394,7 +394,7 @@ ${msg}
 
   const waMsg = encodeURIComponent(waText);
 
-  window.open(`https://wa.me/6295330415394?text=${waMsg}`, '_blank');
+  window.open(`https://wa.me/62895330415394?text=${waMsg}`, '_blank');
 }
 
 
