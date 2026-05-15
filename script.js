@@ -20,14 +20,14 @@ const products = [
     desc: 'Lip Mousse Cream SR12 adalah produk pewarna bibir dengan tekstur mousse yang ringan dan hasil akhir semi-matte. Diformulasikan dengan pigmentasi tinggi, produk ini mampu menutupi warna bibir dengan sempurna dalam se  kali pulasan.',
     cat_label: 'Personal Care', price: 'Rp 45.000', badge: 'Populer'
   },
-  {
-    id: 3, cat: 'Face Care',
-    image: 'Revisigoldserum.jpg',   // ← ganti nama file gambar
-    emoji: '✨',
-    name: 'Gold Serum',
-    desc: 'Membantu mempertahankan kelembapan alami kulit, membantu menyamarkan garis-garis halus sehingga kulit tampak lebih lembab dan kenyal',
-    cat_label: 'Face Care', price: 'Rp 147.000', badge: ''
-  },
+    {
+      id: 3, cat: 'Face Care',
+      image: 'Revisigoldserum.jpg',   // ← ganti nama file gambar
+      emoji: '✨',
+      name: 'Gold Serum',
+      desc: 'Membantu mempertahankan kelembapan alami kulit, membantu menyamarkan garis-garis halus sehingga kulit tampak lebih lembab dan kenyal',
+      cat_label: 'Face Care', price: 'Rp 147.000', badge: ''
+    },
   {
     id: 4, cat: 'Face Care',
     image: 'Revisinight.jpg',   // ← ganti nama file gambar
@@ -224,7 +224,7 @@ function renderProducts(cat) {
       </div>
       <div class="produk-footer">
         <div class="produk-price">${p.price}</div>
-        <a href="https://wa.me/6289533041539?text=Halo%2C%20saya%20mau%20order%20${encodeURIComponent(p.name)}" target="_blank" class="produk-order" title="Order via WhatsApp">
+        <a href="https://wa.me/6295330415394?text=${encodeURIComponent(`Halo kak, saya ingin bertanya dan berkonsultasi mengenai produk ${p.name}😊`)}" target="_blank" class="produk-order" title="Order via WhatsApp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
@@ -367,13 +367,36 @@ statObs.observe(document.getElementById('statistik'));
 
 // ===== FORM SUBMIT =====
 function submitForm() {
-  const name  = document.querySelector('.kontak-form-card input[type="text"]').value;
+
+  const name = document.querySelector('.kontak-form-card input[type="text"]').value;
+
   const phone = document.querySelector('.kontak-form-card input[type="tel"]').value;
-  const msg   = document.querySelector('.kontak-form-card textarea').value;
-  if (!name || !phone) { alert('Mohon lengkapi nama dan nomor WhatsApp Anda.'); return; }
-  const waMsg = encodeURIComponent(`Halo, saya ${name} (${phone}).\n${msg || 'Saya ingin mengetahui lebih lanjut tentang produk SR12.'}`);
-  window.open(`https://wa.me/6289533041539?text=${waMsg}`, '_blank');
+
+  const product = document.querySelector('.kontak-form-card select').value;
+
+  const msg = document.querySelector('.kontak-form-card textarea').value;
+
+  if (!name || !phone) {
+    alert('Mohon lengkapi nama dan nomor WhatsApp Anda.');
+    return;
+  }
+
+  const waText = `
+Halo, saya ${name}
+
+Nomor WhatsApp: ${phone}
+
+Tertarik Produk: ${product}
+
+Pesan:
+${msg}
+`;
+
+  const waMsg = encodeURIComponent(waText);
+
+  window.open(`https://wa.me/6295330415394?text=${waMsg}`, '_blank');
 }
+
 
 // ===== LOADER =====
 window.addEventListener('load', () => {
