@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SR12 Beauty — Produk Herbal & Skincare Terpercaya</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --white: #FAFAF8;
+  --off-white: #F5F3EE;
+  --cream: #EDE9E0;
+  --emerald: #1A6B4A;
+  --emerald-light: #2D8B62;
+  --emerald-dark: #0F4A33;
+  --emerald-pale: #E8F5EE;
+  --gold: #C9A84C;
+  --gold-light: #E2C47A;
+  --gold-pale: #FBF4E3;
+  --charcoal: #1C1C1E;
+  --text-dark: #2A2A2A;
+  --text-mid: #5A5A5A;
+  --text-light: #8A8A8A;
+  --glass-bg: rgba(255,255,255,0.72);
+  --glass-border: rgba(201,168,76,0.18);
+  --shadow-sm: 0 2px 12px rgba(26,107,74,0.08);
+  --shadow-md: 0 8px 32px rgba(26,107,74,0.13);
+  --shadow-lg: 0 24px 64px rgba(26,107,74,0.18);
+  --shadow-gold: 0 8px 32px rgba(201,168,76,0.2);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+[data-theme="dark"] {
+  --white: #0F1A14;
+  --off-white: #162019;
+  --cream: #1E2B22;
+  --emerald: #2D8B62;
+  --emerald-light: #3AAB7A;
+  --emerald-dark: #1A6B4A;
+  --emerald-pale: #162019;
+  --gold: #E2C47A;
+  --gold-light: #F0D89A;
+  --gold-pale: #1E1A10;
+  --charcoal: #F0EDE6;
+  --text-dark: #EDE9E0;
+  --text-mid: #A8B5AA;
+  --text-light: #6A8070;
+  --glass-bg: rgba(15,26,20,0.82);
+  --glass-border: rgba(201,168,76,0.22);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { border: none; cursor: pointer; font-family: var(--font-body); }
+section { overflow: hidden; }
+
+/* ===== LOADING SCREEN ===== */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--emerald-dark);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo {
+  font-family: var(--font-display);
+  font-size: 3rem; font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+}
+.loader-bar {
+  width: 200px; height: 2px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.loader-bar-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 999px;
+  animation: loadFill 1.8s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+@keyframes loadFill { to { width: 100%; } }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--emerald); border-radius: 3px; }
+
+/* ===== UTILITY ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-label::before, .section-label::after {
+  content: ''; display: block;
+  width: 28px; height: 1px; background: var(--gold);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 600; line-height: 1.15;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 1.05rem; color: var(--text-mid);
+  max-width: 560px; line-height: 1.8;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  color: #fff; font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 6px 24px rgba(26,107,74,0.3);
+  transition: var(--transition);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(26,107,74,0.4);
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold); font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: var(--transition);
+}
+.btn-secondary:hover {
+  background: var(--gold); color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 24px; border-radius: 999px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff; font-size: 0.85rem; font-weight: 600;
+  transition: var(--transition);
+}
+.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 20px 0;
+  transition: var(--transition);
+}
+#navbar.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 14px 0;
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+}
+.logo-mark {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+  color: #fff; letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(26,107,74,0.3);
+}
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-text strong {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+  color: var(--text-dark); letter-spacing: 0.04em;
+}
+.logo-text span { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-links a {
+  font-size: 0.87rem; font-weight: 500; color: var(--text-mid);
+  padding: 8px 14px; border-radius: 999px;
+  transition: var(--transition);
+}
+.nav-links a:hover { color: var(--emerald); background: var(--emerald-pale); }
+.nav-links a.active { color: var(--emerald); font-weight: 600; }
+.nav-cta { display: flex; align-items: center; gap: 12px; }
+.dark-toggle {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--off-white); color: var(--text-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; transition: var(--transition);
+  border: 1px solid var(--cream);
+}
+.dark-toggle:hover { background: var(--emerald-pale); color: var(--emerald); }
+.hamburger {
+  display: none; width: 40px; height: 40px; border-radius: 10px;
+  background: var(--off-white); color: var(--text-mid);
+  align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition);
+}
+.mobile-menu {
+  display: none; position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 85vw);
+  background: var(--white); z-index: 1100; padding: 80px 32px 40px;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a {
+  display: block; padding: 16px 0; font-size: 1.1rem; font-weight: 500;
+  color: var(--text-dark); border-bottom: 1px solid var(--cream);
+}
+.mobile-overlay {
+  display: none; position: fixed; inset: 0; z-index: 1050;
+  background: rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.3s;
+}
+.mobile-overlay.open { opacity: 1; }
+.close-menu {
+  position: absolute; top: 24px; right: 24px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--off-white); color: var(--text-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  background: var(--white);
+  position: relative;
+  display: flex; align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 50%, rgba(26,107,74,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(26,107,74,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,107,74,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-orb-1 {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%; right: -100px; top: -100px;
+  background: radial-gradient(circle, rgba(26,107,74,0.1) 0%, transparent 65%);
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.hero-orb-2 {
+  position: absolute; width: 400px; height: 400px;
+  border-radius: 50%; left: -80px; bottom: -80px;
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 65%);
+  animation: orbFloat 10s ease-in-out infinite reverse;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0,0); }
+  50% { transform: translate(20px, -20px); }
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold-pale); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 999px; padding: 6px 16px;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s 0.3s both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 700; line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s 0.4s both;
+}
+.hero-title em {
+  font-style: italic; color: var(--emerald);
+  position: relative;
+}
+.hero-sub {
+  font-size: 1.1rem; color: var(--text-mid); line-height: 1.8;
+  margin-bottom: 40px; max-width: 480px;
+  animation: fadeInUp 0.8s 0.5s both;
+}
+.hero-cta {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeInUp 0.8s 0.6s both;
+}
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 60px;
+  animation: fadeInUp 0.8s 0.7s both;
+}
+.hero-stat-item { display: flex; flex-direction: column; }
+.hero-stat-num {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
+  color: var(--emerald); line-height: 1;
+}
+.hero-stat-label { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; font-weight: 500; }
+.hero-visual {
+  position: relative;
+  animation: fadeInUp 0.8s 0.5s both;
+}
+.hero-card-main {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 40px; text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative; z-index: 2;
+}
+.hero-emoji-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px;
+}
+.hero-emoji-item {
+  background: var(--off-white);
+  border-radius: var(--radius-sm); padding: 20px 12px;
+  transition: var(--transition);
+}
+.hero-emoji-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.hero-emoji-item .emoji { font-size: 2.2rem; margin-bottom: 8px; }
+.hero-emoji-item span { font-size: 0.72rem; color: var(--text-mid); font-weight: 500; display: block; }
+.hero-card-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--emerald-pale); border: 1px solid rgba(26,107,74,0.2);
+  border-radius: 999px; padding: 10px 20px;
+  font-size: 0.85rem; color: var(--emerald); font-weight: 600;
+}
+.floating-pill {
+  position: absolute; background: var(--white);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px; padding: 12px 20px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: var(--shadow-md); font-size: 0.8rem; font-weight: 500;
+  color: var(--text-dark); z-index: 3;
+  animation: pillFloat 4s ease-in-out infinite;
+}
+.floating-pill-1 { top: -20px; right: -20px; animation-delay: 0s; }
+.floating-pill-2 { bottom: 40px; left: -30px; animation-delay: 1.5s; }
+@keyframes pillFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); }
+
+/* ===== TENTANG KAMI ===== */
+#tentang {
+  padding: 100px 0;
+  background: var(--off-white);
+}
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-visual { position: relative; }
+.about-img-frame {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: linear-gradient(135deg, var(--emerald-pale), var(--gold-pale));
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.about-img-inner {
+  text-align: center; padding: 40px;
+}
+.about-big-icon { font-size: 8rem; line-height: 1; display: block; margin-bottom: 16px; }
+.about-img-frame::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(26,107,74,0.12) 0%, transparent 60%);
+}
+.about-badge-float {
+  position: absolute; background: var(--gold);
+  color: var(--white); border-radius: var(--radius-md);
+  padding: 16px 20px; bottom: -24px; right: -24px;
+  text-align: center; box-shadow: var(--shadow-gold);
+}
+.about-badge-float strong { font-family: var(--font-display); font-size: 2rem; font-weight: 700; display: block; }
+.about-badge-float span { font-size: 0.72rem; font-weight: 500; opacity: 0.9; letter-spacing: 0.08em; }
+.about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+.about-card {
+  background: var(--white);
+  border-radius: var(--radius-md); padding: 24px;
+  border: 1px solid var(--cream);
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+}
+.about-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(26,107,74,0.2); }
+.about-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--emerald-pale); color: var(--emerald);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; margin-bottom: 14px;
+}
+.about-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+.about-card p { font-size: 0.8rem; color: var(--text-mid); line-height: 1.6; }
+
+/* ===== PRODUK ===== */
+#produk { padding: 100px 0; }
+.produk-header { text-align: center; margin-bottom: 60px; }
+.produk-header .section-sub { margin: 0 auto; }
+.category-tabs {
+  display: flex; justify-content: center; gap: 8px;
+  flex-wrap: wrap; margin-bottom: 48px;
+}
+.cat-tab {
+  padding: 10px 24px; border-radius: 999px;
+  background: var(--off-white); color: var(--text-mid);
+  font-size: 0.85rem; font-weight: 500;
+  border: 1.5px solid var(--cream);
+  transition: var(--transition); cursor: pointer;
+}
+.cat-tab.active, .cat-tab:hover {
+  background: var(--emerald); color: #fff;
+  border-color: var(--emerald);
+  box-shadow: 0 4px 16px rgba(26,107,74,0.25);
+}
+.produk-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+.produk-card {
+  background: var(--white);
+  border: 1px solid var(--cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+}
+.produk-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(26,107,74,0.2);
+}
+.produk-img {
+  height: 220px; background: var(--off-white);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.produk-img-emoji { font-size: 6rem; transition: transform 0.5s cubic-bezier(0.23,1,0.32,1); }
+.produk-card:hover .produk-img-emoji { transform: scale(1.15) rotate(-5deg); }
+.produk-img-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at center, var(--emerald-pale) 0%, transparent 70%);
+}
+.produk-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--emerald); color: #fff;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 4px 12px; border-radius: 999px;
+}
+.produk-body { padding: 24px; }
+.produk-cat { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.produk-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.2; }
+.produk-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+.produk-footer { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-top: 1px solid var(--cream); }
+.produk-price { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--emerald); }
+.produk-order {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition);
+}
+.produk-order:hover { transform: scale(1.12); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+
+/* ===== KEUNGGULAN ===== */
+#keunggulan {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 60%, var(--emerald-light) 100%);
+  position: relative; overflow: hidden;
+}
+#keunggulan::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(201,168,76,0.12) 0%, transparent 50%);
+}
+.keunggulan-header { text-align: center; margin-bottom: 60px; position: relative; }
+.keunggulan-header .section-label { color: var(--gold-light); }
+.keunggulan-header .section-label::before, .keunggulan-header .section-label::after { background: var(--gold-light); }
+.keunggulan-header .section-title { color: #fff; }
+.keunggulan-header .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto; }
+.keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; position: relative; }
+.keunggulan-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: 36px 24px; text-align: center;
+  transition: var(--transition);
+}
+.keunggulan-card:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.4);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.2);
+}
+.keunggulan-icon {
+  width: 72px; height: 72px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin: 0 auto 20px;
+  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  transition: var(--transition);
+}
+.keunggulan-card:hover .keunggulan-icon { transform: scale(1.1) rotate(-5deg); }
+.keunggulan-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.keunggulan-card p { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+/* ===== TESTIMONI ===== */
+#testimoni { padding: 100px 0; background: var(--off-white); }
+.testimoni-header { text-align: center; margin-bottom: 60px; }
+.testi-track-wrap { overflow: hidden; position: relative; }
+.testi-track-wrap::before, .testi-track-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; z-index: 2;
+  width: 80px; pointer-events: none;
+}
+.testi-track-wrap::before { left: 0; background: linear-gradient(to right, var(--off-white), transparent); }
+.testi-track-wrap::after { right: 0; background: linear-gradient(to left, var(--off-white), transparent); }
+.testi-track {
+  display: flex; gap: 24px;
+  animation: tScroll 28s linear infinite;
+  width: max-content;
+}
+.testi-track:hover { animation-play-state: paused; }
+@keyframes tScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.testi-card {
+  width: 320px; flex-shrink: 0;
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 28px; border: 1px solid var(--cream);
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+}
+.testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+.testi-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--emerald-pale); display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.testi-info strong { display: block; font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
+.testi-info span { font-size: 0.75rem; color: var(--text-light); }
+
+/* ===== GALERI ===== */
+#galeri { padding: 100px 0; }
+.galeri-header { text-align: center; margin-bottom: 60px; }
+.galeri-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+}
+.galeri-item {
+  border-radius: var(--radius-md); overflow: hidden;
+  position: relative; cursor: pointer;
+  background: var(--off-white);
+  display: flex; align-items: center; justify-content: center;
+}
+.galeri-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
+.galeri-item:nth-child(2) { aspect-ratio: 1; }
+.galeri-item:nth-child(3) { aspect-ratio: 1; }
+.galeri-item:nth-child(4) { aspect-ratio: 1; }
+.galeri-item:nth-child(5) { aspect-ratio: 1; }
+.galeri-item:nth-child(6) { grid-column: span 2; aspect-ratio: 2; }
+.galeri-inner {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px; padding: 20px;
+  position: relative;
+  min-height: 140px;
+}
+.galeri-emoji { font-size: 3.5rem; transition: transform 0.4s; }
+.galeri-item:nth-child(1) .galeri-emoji { font-size: 6rem; }
+.galeri-label { font-size: 0.75rem; color: var(--text-mid); font-weight: 500; }
+.galeri-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,107,74,0.85);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  opacity: 0; transition: var(--transition);
+}
+.galeri-item:hover .galeri-overlay { opacity: 1; }
+.galeri-item:hover .galeri-emoji { transform: scale(1.1); }
+.galeri-overlay span { color: #fff; font-size: 0.85rem; font-weight: 600; }
+.galeri-overlay i { color: var(--gold-light); font-size: 1.5rem; }
+.galeri-item:nth-child(1) { background: linear-gradient(135deg, var(--emerald-pale), var(--gold-pale)); }
+.galeri-item:nth-child(2) { background: linear-gradient(135deg, var(--gold-pale), var(--off-white)); }
+.galeri-item:nth-child(3) { background: linear-gradient(135deg, var(--off-white), var(--emerald-pale)); }
+.galeri-item:nth-child(4) { background: linear-gradient(135deg, var(--cream), var(--gold-pale)); }
+.galeri-item:nth-child(5) { background: linear-gradient(135deg, var(--emerald-pale), var(--off-white)); }
+.galeri-item:nth-child(6) { background: linear-gradient(135deg, var(--gold-pale), var(--emerald-pale)); }
+
+/* ===== STATISTIK ===== */
+#statistik {
+  padding: 80px 0;
+  background: var(--white);
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+}
+.statistik-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: var(--font-display); font-size: 3.5rem; font-weight: 700;
+  color: var(--emerald); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-num span { font-size: 2.2rem; color: var(--gold); }
+.stat-label { font-size: 0.88rem; color: var(--text-mid); font-weight: 500; }
+.stat-sep { width: 1px; height: 80px; background: var(--cream); margin: auto; }
+
+/* ===== KONTAK ===== */
+#kontak { padding: 100px 0; background: var(--off-white); }
+.kontak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.kontak-info { }
+.kontak-channels { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+.kontak-channel {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--white); border: 1px solid var(--cream);
+  border-radius: var(--radius-md); padding: 20px 24px;
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+}
+.kontak-channel:hover { transform: translateX(6px); box-shadow: var(--shadow-md); border-color: rgba(26,107,74,0.2); }
+.kontak-channel-icon {
+  width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.kontak-channel-icon.wa { background: #E7F8EE; color: #25D366; }
+.kontak-channel-icon.ig { background: #FDE8EE; color: #E1306C; }
+.kontak-channel-icon.loc { background: var(--emerald-pale); color: var(--emerald); }
+.kontak-channel-text strong { display: block; font-size: 0.88rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+.kontak-channel-text span { font-size: 0.8rem; color: var(--text-mid); }
+.kontak-form-card {
+  background: var(--white); border: 1px solid var(--cream);
+  border-radius: var(--radius-lg); padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+.form-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+.form-sub { font-size: 0.85rem; color: var(--text-mid); margin-bottom: 32px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; letter-spacing: 0.03em; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 14px 18px;
+  border: 1.5px solid var(--cream); border-radius: var(--radius-sm);
+  background: var(--off-white); color: var(--text-dark);
+  font-family: var(--font-body); font-size: 0.9rem;
+  transition: var(--transition); resize: vertical;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  outline: none; border-color: var(--emerald);
+  background: var(--white); box-shadow: 0 0 0 4px rgba(26,107,74,0.08);
+}
+.form-group textarea { min-height: 120px; }
+.form-btn {
+  width: 100%; padding: 16px;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  color: #fff; border-radius: var(--radius-sm);
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 6px 24px rgba(26,107,74,0.3);
+  transition: var(--transition);
+}
+.form-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(26,107,74,0.4); }
+.map-embed {
+  margin-top: 24px; border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--cream);
+  background: var(--cream);
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: var(--text-mid);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--charcoal);
+  padding: 60px 0 32px;
+  position: relative;
+}
+[data-theme="dark"] footer { background: #080F0B; }
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand { }
+.footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.footer-logo .logo-mark { background: linear-gradient(135deg, var(--emerald), var(--emerald-light)); }
+.footer-logo .logo-text strong { color: #fff; }
+.footer-logo .logo-text span { color: var(--gold-light); }
+.footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 280px; }
+.footer-socials { display: flex; gap: 10px; margin-top: 24px; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; transition: var(--transition);
+}
+.social-btn:hover { background: var(--emerald); color: #fff; transform: translateY(-2px); }
+.footer-col h4 { font-size: 0.82rem; font-weight: 700; color: #fff; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+.footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul a { font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.3s; }
+.footer-col ul a:hover { color: var(--gold-light); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 32px; flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+.footer-copy span { color: var(--gold-light); }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a { font-size: 0.78rem; color: rgba(255,255,255,0.35); transition: color 0.3s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+/* ===== BACK TO TOP ===== */
+#backTop {
+  position: fixed; bottom: 32px; right: 32px; z-index: 900;
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--emerald); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; box-shadow: var(--shadow-md);
+  transform: translateY(80px); opacity: 0;
+  transition: var(--transition); cursor: pointer;
+}
+#backTop.visible { transform: translateY(0); opacity: 1; }
+#backTop:hover { background: var(--emerald-dark); transform: translateY(-4px); }
+
+/* ===== WA FLOAT ===== */
+#waFloat {
+  position: fixed; bottom: 32px; left: 32px; z-index: 900;
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff; border-radius: 999px; padding: 14px 24px;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+  font-size: 0.87rem; font-weight: 700;
+  transition: var(--transition); cursor: pointer;
+  text-decoration: none;
+  animation: waPulse 3s ease-in-out infinite;
+}
+#waFloat:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(37,211,102,0.5); }
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.3); }
+  50% { box-shadow: 0 8px 32px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 440px; margin: 0 auto; }
+  .about-grid { grid-template-columns: 1fr; gap: 60px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .statistik-grid { grid-template-columns: repeat(2,1fr); gap: 40px; }
+  .kontak-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta .btn-wa { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu, .mobile-overlay { display: block; }
+  .hero-stats { gap: 24px; }
+  .hero-stat-num { font-size: 1.8rem; }
+  .about-cards { grid-template-columns: 1fr; }
+  .galeri-grid { grid-template-columns: repeat(2,1fr); }
+  .galeri-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .galeri-item:nth-child(6) { grid-column: span 1; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .statistik-grid { grid-template-columns: repeat(2,1fr); }
+  .keunggulan-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  #waFloat span { display: none; }
+  #waFloat { padding: 14px; border-radius: 50%; }
+}
+@media (max-width: 480px) {
+  .section-title { font-size: 1.9rem; }
+  .hero-cta { flex-direction: column; }
+  .galeri-grid { grid-template-columns: 1fr 1fr; }
+  .statistik-grid { grid-template-columns: repeat(2,1fr); }
+  .keunggulan-grid { grid-template-columns: 1fr 1fr; }
+  .produk-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">SR12</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="logo-mark">SR</div>
+        <div class="logo-text">
+          <strong>SR12 Beauty</strong>
+          <span>Skincare & Herbal</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#tentang">Tentang Kami</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#keunggulan">Keunggulan</a></li>
+        <li><a href="#testimoni">Testimoni</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+          <i class="fa fa-moon"></i>
+        </button>
+        <a href="https://wa.me/6289533041539?text=Halo%2C%20saya%20ingin%20memesan%20produk%20SR12" class="btn-wa" target="_blank">
+          <i class="fab fa-whatsapp"></i> Pesan Sekarang
+        </a>
+        <button class="hamburger" id="hamburger">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenu"><i class="fa fa-times"></i></button>
+  <a href="#hero">🏠 Home</a>
+  <a href="#tentang">🌿 Tentang Kami</a>
+  <a href="#produk">🛍 Produk</a>
+  <a href="#keunggulan">⭐ Keunggulan</a>
+  <a href="#testimoni">💬 Testimoni</a>
+  <a href="#galeri">📸 Galeri</a>
+  <a href="#kontak">📞 Kontak</a>
+  <br>
+  <a href="https://wa.me/6289533041539" class="btn-wa" style="margin-top:16px;" target="_blank">
+    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+  </a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa fa-leaf"></i>
+          Mitra Resmi Sub Agen SR12
+        </div>
+        <h1 class="hero-title">
+          Produk <em>Herbal</em> &amp;<br>Skincare SR12<br>Terpercaya
+        </h1>
+        <p class="hero-sub">
+          Dapatkan produk skincare, herbal, dan bodycare berkualitas premium dari SR12. Original, halal, dan terdaftar BPOM. Konsultasi gratis, pengiriman ke seluruh Indonesia.
+        </p>
+        <div class="hero-cta">
+          <a href="#produk" class="btn-primary">
+            <i class="fa fa-sparkles"></i> Lihat Produk
+          </a>
+          <a href="#kontak" class="btn-secondary">
+            <i class="fa fa-phone"></i> Hubungi Kami
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num" data-count="500">0</span>
+            <span class="hero-stat-label">Pelanggan Puas</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num" data-count="50">0</span>
+            <span class="hero-stat-label">Jenis Produk</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num" data-count="98">0</span>
+            <span class="hero-stat-label">% Kepuasan</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-pill floating-pill-1">
+          <div class="pill-dot"></div>
+          BPOM Terdaftar
+        </div>
+        <div class="floating-pill floating-pill-2">
+          <i class="fa fa-star" style="color:var(--gold)"></i>
+          4.9 Rating Customer
+        </div>
+        <div class="hero-card-main">
+          <div class="hero-emoji-grid">
+            <div class="hero-emoji-item">
+              <div class="emoji">🌿</div>
+              <span>Herbal</span>
+            </div>
+            <div class="hero-emoji-item">
+              <div class="emoji">✨</div>
+              <span>Personal Care</span>
+            </div>
+            <div class="hero-emoji-item">
+              <div class="emoji">🛁</div>
+              <span>Bodycare</span>
+            </div>
+            <div class="hero-emoji-item">
+              <div class="emoji">💆</div>
+              <span>Face Care</span>
+            </div>
+            <div class="hero-emoji-item">
+              <div class="emoji">🌺</div>
+              <span>Natural</span>
+            </div>
+            <div class="hero-emoji-item">
+              <div class="emoji">💎</div>
+              <span>Premium</span>
+            </div>
+          </div>
+          <div class="hero-card-badge">
+            <i class="fa fa-check-circle"></i>
+            Produk Original & Halal
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TENTANG KAMI -->
+<section id="tentang">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal-left">
+        <div class="about-img-frame">
+          <div class="about-img-inner">
+            <span class="about-big-icon">🌿</span>
+            <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--emerald);margin-bottom:8px;">SR12 Beauty</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);">Mitra Terpercaya Sejak 2020</div>
+          </div>
+        </div>
+        <div class="about-badge-float">
+          <strong>5★</strong>
+          <span>Rating Terpercaya</span>
+        </div>
+      </div>
+      <div class="about-content reveal-right">
+        <div class="section-label">Tentang Kami</div>
+        <h2 class="section-title">Mitra Resmi SR12 yang Berpengalaman</h2>
+        <p class="section-sub">
+          Kami adalah sub agen resmi produk SR12, bergerak di bidang skincare, herbal, dan bodycare. Dengan pengalaman melayani ratusan pelanggan, kami berkomitmen memberikan produk terbaik dengan pelayanan tulus dari hati.
+        </p>
+        <div class="about-cards">
+          <div class="about-card reveal delay-1">
+            <div class="about-card-icon"><i class="fa fa-eye"></i></div>
+            <h4>Visi Kami</h4>
+            <p>Menjadi mitra skincare dan herbal terpercaya yang membantu masyarakat hidup lebih sehat dan percaya diri.</p>
+          </div>
+          <div class="about-card reveal delay-2">
+            <div class="about-card-icon"><i class="fa fa-bullseye"></i></div>
+            <h4>Misi Kami</h4>
+            <p>Menyediakan produk SR12 original dengan harga terjangkau dan pelayanan konsultasi gratis untuk semua pelanggan.</p>
+          </div>
+          <div class="about-card reveal delay-3">
+            <div class="about-card-icon"><i class="fa fa-handshake"></i></div>
+            <h4>Komitmen</h4>
+            <p>Kami berkomitmen menjaga kepercayaan pelanggan dengan menjual produk 100% original dan bergaransi.</p>
+          </div>
+          <div class="about-card reveal delay-4">
+            <div class="about-card-icon"><i class="fa fa-shield-halved"></i></div>
+            <h4>Jaminan</h4>
+            <p>Setiap produk dijamin keasliannya, aman, halal, dan telah mendapatkan sertifikasi dari lembaga resmi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUK -->
+<section id="produk">
+  <div class="container">
+    <div class="produk-header reveal">
+      <div class="section-label">Katalog Produk</div>
+      <h2 class="section-title">Pilihan Produk SR12 Terlengkap</h2>
+      <p class="section-sub">Temukan produk skincare, herbal, bodycare, dan haircare terbaik dari SR12 dengan kualitas premium dan harga terjangkau.</p>
+    </div>
+    <div class="category-tabs reveal">
+      <button class="cat-tab active" data-cat="all">Semua</button>
+      <button class="cat-tab" data-cat="Personal Care">Personal Care</button>
+      <button class="cat-tab" data-cat="herbal">Herbal</button>
+      <button class="cat-tab" data-cat="bodycare">Bodycare</button>
+      <button class="cat-tab" data-cat="Face Care">Face Care</button>
+       <button class="cat-tab" data-cat="Haircare">Haircare</button>
+    </div>
+    <div class="produk-grid" id="produkGrid">
+      <!-- Produk cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section id="keunggulan">
+  <div class="container">
+    <div class="keunggulan-header reveal">
+      <div class="section-label">Mengapa Memilih Kami</div>
+      <h2 class="section-title">Keunggulan yang Kami Tawarkan</h2>
+      <p class="section-sub">Kami hadir untuk memberikan pengalaman berbelanja skincare yang menyenangkan, aman, dan terpercaya.</p>
+    </div>
+    <div class="keunggulan-grid">
+      <div class="keunggulan-card reveal delay-1">
+        <div class="keunggulan-icon">✅</div>
+        <h3>Produk 100% Original</h3>
+        <p>Semua produk SR12 yang kami jual dijamin keasliannya langsung dari distributor resmi.</p>
+      </div>
+      <div class="keunggulan-card reveal delay-2">
+        <div class="keunggulan-icon">🕌</div>
+        <h3>Halal Tersertifikasi</h3>
+        <p>Produk SR12 telah mendapatkan sertifikasi halal MUI untuk ketenangan pikiran Anda.</p>
+      </div>
+      <div class="keunggulan-card reveal delay-3">
+        <div class="keunggulan-icon">🏥</div>
+        <h3>Terdaftar BPOM</h3>
+        <p>Seluruh produk telah mendapatkan izin edar resmi dari BPOM dan aman digunakan.</p>
+      </div>
+      <div class="keunggulan-card reveal delay-4">
+        <div class="keunggulan-icon">💬</div>
+        <h3>Konsultasi Gratis</h3>
+        <p>Dapatkan konsultasi produk secara gratis melalui WhatsApp kapan saja dan di mana saja.</p>
+      </div>
+      <div class="keunggulan-card reveal delay-5">
+        <div class="keunggulan-icon">🚀</div>
+        <h3>Pengiriman Cepat</h3>
+        <p>Kami melayani pengiriman ke seluruh Indonesia dengan packaging yang aman dan rapi.</p>
+      </div>
+      <div class="keunggulan-card reveal delay-6">
+        <div class="keunggulan-icon">💝</div>
+        <h3>Pelayanan Ramah</h3>
+        <p>Tim kami siap melayani dengan sepenuh hati untuk memberikan pengalaman terbaik Anda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+  <div class="container">
+    <div class="testimoni-header reveal">
+      <div class="section-label">Testimoni</div>
+      <h2 class="section-title">Apa Kata Pelanggan Kami</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">
+  Ribuan pelanggan telah merasakan manfaat luar biasa dari produk SR12 yang kami jual.
+</p>
+    </div>
+  </div>
+  <div class="testi-track-wrap">
+    <div class="testi-track" id="testiTrack">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri">
+  <div class="container">
+    <div class="galeri-header reveal" style="text-align:center;">
+      <div class="section-label">Galeri</div>
+      <h2 class="section-title">Dokumentasi &amp; Produk Kami</h2>  
+      <p class="section-sub">Lihat koleksi foto produk dan aktivitas usaha kami secara langsung.</p>
+    </div>
+    <div class="galeri-grid reveal">
+      <div class="galeri-item">
+        <div class="galeri-inner">
+          <div class="galeri-emoji">✨</div>
+          <div class="galeri-label">Koleksi Skincare Premium</div>
+        </div>
+        <div class="galeri-overlay">
+          <i class="fa fa-search-plus"></i>
+          <span>Skincare Collection</span>
+        </div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-inner">
+          <div class="galeri-emoji">🌿</div>
+          <div class="galeri-label">Produk Herbal SR12</div>
+        </div>
+        <div class="galeri-overlay">
+          <i class="fa fa-search-plus"></i>
+          <span>Herbal Products</span>
+        </div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-inner">
+          <div class="galeri-emoji">🛁</div>
+          <div class="galeri-label">Bodycare Series</div>
+        </div>
+        <div class="galeri-overlay">
+          <i class="fa fa-search-plus"></i>
+          <span>Bodycare Series</span>
+        </div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-inner">
+          <div class="galeri-emoji">💆</div>
+          <div class="galeri-label">Haircare Treatment</div>
+        </div>
+        <div class="galeri-overlay">
+          <i class="fa fa-search-plus"></i>
+          <span>Haircare Treatment</span>
+        </div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-inner">
+          <div class="galeri-emoji">📦</div>
+          <div class="galeri-label">Packaging Premium</div>
+        </div>
+        <div class="galeri-overlay">
+          <i class="fa fa-search-plus"></i>
+          <span>Premium Packaging</span>
+        </div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-inner">
+          <div class="galeri-emoji">🌺</div>
+          <div class="galeri-label">Bahan Alami SR12</div>
+        </div>
+        <div class="galeri-overlay">
+          <i class="fa fa-search-plus"></i>
+          <span>Natural Ingredients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTIK -->
+<section id="statistik">
+  <div class="container">
+    <div class="statistik-grid">
+      <div class="stat-item reveal delay-1">
+        <div class="stat-num"><span id="s1">0</span>+</div>
+        <div class="stat-label">Pelanggan Bahagia</div>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <div class="stat-num"><span id="s2">0</span>+</div>
+        <div class="stat-label">Produk Terjual</div>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <div class="stat-num"><span id="s3">4</span>.<span id="s4">9</span></div>
+        <div class="stat-label">Rating Customer</div>
+      </div>
+      <div class="stat-item reveal delay-4">
+        <div class="stat-num"><span id="s5">0</span>+</div>
+        <div class="stat-label">Produk Tersedia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;" class="reveal">
+      <div class="section-label">Hubungi Kami</div>
+      <h2 class="section-title">Mari Terhubung dengan Kami</h2>
+      <p class="section-sub" style="margin:0 auto;">Siap membantu Anda menemukan produk yang tepat. Konsultasi gratis, respons cepat!</p>
+    </div>
+    <div class="kontak-grid">
+      <div class="reveal-left">
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin-bottom:12px;color:var(--text-dark);">Informasi Kontak</h3>
+        <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:8px;">Hubungi kami melalui salah satu channel berikut. Kami siap melayani Anda dengan sepenuh hati.</p>
+        <div class="kontak-channels">
+          <a href="https://wa.me/6289533041539" target="_blank" class="kontak-channel">
+            <div class="kontak-channel-icon wa"><i class="fab fa-whatsapp"></i></div>
+            <div class="kontak-channel-text">
+              <strong>WhatsApp</strong>
+              <span>+62 895-3304-15394</span>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/sk6_herbalskincare.sr12?igsh=d2s0Z21hdHJjMDhh" target="_blank" class="kontak-channel">
+            <div class="kontak-channel-icon ig"><i class="fab fa-instagram"></i></div>
+            <div class="kontak-channel-text">
+              <strong>Instagram</strong>
+              <span>@sk6_herbalskincare.sr12</span>
+            </div>
+          </a>
+          <div class="kontak-channel">
+            <div class="kontak-channel-icon loc"><i class="fa fa-map-marker-alt"></i></div>
+            <div class="kontak-channel-text">
+              <strong>Lokasi</strong>
+              <span>Jl. Hanjuang, Kp. Citerep RT 04/06 Ds. Pabuaran, Kec. Gn. Sindur, Kab. Bogor, Jawa Barat 16340</span>
+            </div>
+          </div>
+        </div>
+       <div class="map-embed">
+  <!-- Bungkus dengan tag <a> dan masukkan link alamatnya -->
+  <a href="https://www.google.com/maps/search/Kab.+Bogor,+Jawa+Barat+16340" target="_blank" style="text-decoration: none; color: inherit;">
+    <div style="text-align:center">
+      <div style="font-size:2.5rem;margin-bottom:8px">📍</div>
+      <div style="font-size:0.9rem;color:var(--text-mid);font-weight:500">Kab. Bogor, Jawa Barat 16340</div>
+      <div style="font-size:0.78rem;color:var(--text-light);margin-top:4px">Klik untuk buka Google Maps</div>
+    </div>
+  </a>
+ </div> 
+</div>
+      <div class="kontak-form-card reveal-right">
+        <div class="form-title">Kirim Pesan</div>
+        <div class="form-sub">Isi formulir di bawah ini dan kami akan segera menghubungi Anda.</div>
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" placeholder="Masukkan nama Anda">
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp</label>
+          <input type="tel" placeholder="08xx xxxx xxxx">
+        </div>
+        <div class="form-group">
+          <label>Tertarik Produk</label>
+          <select>
+            <option>Pilih kategori produk</option>
+            <option>Personal Care</option>
+            <option>Herbal</option>
+            <option>Bodycare</option>
+            <option>Face Care</option>
+            <option>Semua Kategori</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pesan</label>
+          <textarea placeholder="Tulis pesan atau pertanyaan Anda..."></textarea>
+        </div>
+        <button class="form-btn" onclick="submitForm()">
+          <i class="fa fa-paper-plane"></i> Kirim Pesan
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-mark">SR</div>
+          <div class="logo-text">
+            <strong>SR12 Beauty</strong>
+            <span>Skincare & Herbal</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Mitra resmi sub agen SR12 yang berkomitmen menyediakan produk skincare, herbal, dan bodycare berkualitas premium untuk kecantikan dan kesehatan Anda.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#produk">Produk</a></li>
+          <li><a href="#keunggulan">Keunggulan</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Produk</h4>
+        <ul>
+          <li><a href="#produk">Personal Care</a></li>
+          <li><a href="#produk">Herbal</a></li>
+          <li><a href="#produk">Bodycare</a></li>
+          <li><a href="#produk">Face Care</a></li>
+          <li><a href="#produk">Paket Bundle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informasi</h4>
+        <ul>
+          <li><a href="#kontak">Kontak Kami</a></li>
+          <li><a href="#">Cara Order</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Jadi Reseller</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>SR12 Beauty</span>. Mitra Resmi Sub Agen SR12. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+
+<script src="script.js"></script>
+</body>
+</html>
